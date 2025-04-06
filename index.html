@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login3</title>
+  <title>Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -26,9 +27,24 @@
       align-items: center;
     }
 
+    .title {
+      font-family: 'Lobster', cursive;
+      font-size: 48px;
+      color: white;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px #000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .title-icons {
+      font-size: 32px;
+    }
+
     .profile-icon {
-      width: 80px;
-      height: 80px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       overflow: hidden;
       margin-bottom: 20px;
@@ -40,7 +56,7 @@
     .profile-icon img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     input[type="password"] {
@@ -67,8 +83,13 @@
 </head>
 <body>
   <div class="login-container">
+    <div class="title">
+      <span class="title-icons">🍾🎰🃏</span>
+      Pedayla
+      <span class="title-icons">🍸♠️🍷</span>
+    </div>
     <div class="profile-icon">
-      <img src="lp.jpg" alt="Profile Picture">
+      <img src="lp" alt="Profile Picture">
     </div>
     <form onsubmit="return checkPassword()">
       <input type="password" id="password" placeholder="Enter Password" required />
