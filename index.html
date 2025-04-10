@@ -16,7 +16,17 @@
       height: 100vh;
       font-family: Arial, sans-serif;
     }
-
+    .audio-player {
+      margin-top: 20px;
+      text-align: center;
+      color: #ccc;
+    }
+    .audio-player canvas {
+      width: 100%;
+      height: 100px;
+      background-color: #333;
+      margin-top: 10px;
+    }
     .login-container {
       background-color: rgba(0, 0, 0, 0.6);
       padding: 40px;
@@ -133,6 +143,12 @@
     </form>
   </div>
   
+  <div class="audio-player">
+    <p id="track-title">Track Title</p>
+    <button id="play-pause-btn">Pause</button>
+    <canvas id="audio-visualizer"></canvas>
+  </div>
+  
  <audio id="background-music" loop>
     <source src="lgmusic.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -150,7 +166,20 @@
         return false;
       }
     }
-	
+	 const playPauseBtn = document.getElementById('play-pause-btn');
+    const audio = document.getElementById('background-audio');
+
+    playPauseBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(error => {
+          console.error('Playback was prevented:', error);
+        });
+        playPauseBtn.textContent = 'Pause';
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = 'Play';
+      }
+    });
 	    document.body.addEventListener('click', function() {
       const audio = document.getElementById('background-music');
       if (audio.paused) {
@@ -159,6 +188,43 @@
         });
       }
     }, { once: true });
+	const canvas = document.getElementById('audio-visualizer');
+    const ctx = canvas.getContext('2d');
+    const analyser = new (window.AudioContext || window.webkitAudioContext)().createAnalyser();
+    const source = new (window.AudioContext || window.webkitAudioContext)().createMediaElementSource(audio);
+    source.connect(analyser);
+    analyser.connect(new (window.AudioContext || window.webkitAudioContext)().destination);
+    analyser.fftSize = 256;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    function draw() {
+      requestAnimationFrame(draw);
+      analyser.getByteFrequencyData(dataArray);
+      ctx.fillStyle = '#333';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ff69b4';
+      ctx.beginPath();
+      const sliceWidth = canvas.width * 1.0 / bufferLength;
+      let x = 0;
+      for (let i = 0; i < bufferLength; i++) {
+        const v = dataArray[i] / 128.0; // Convert to range [0, 1]
+        const y = v * canvas.height / 2;
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+        x += sliceWidth;
+      }
+      ctx.lineTo(canvas.width, canvas.height / 2);
+      ctx.stroke();
+    }
+
+    audio.addEventListener('play', () => {
+      draw();
+    });
   </script>
 </body>
 </html>
