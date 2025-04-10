@@ -16,8 +16,8 @@
             align-items: center;
             justify-content: center;
             font-family: 'Metal Mania', cursive;
-            color: #ccc; /* Light gray color for text */
-            text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666; /* Grayish glowing effect */
+            color: #ccc;
+            text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666;
             flex-direction: column;
         }
 
@@ -38,8 +38,10 @@
         }
 
         .content {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px; /* Max width for larger screens */
             text-align: center;
+            margin: 0 auto;
         }
 
         .gallery,
@@ -53,23 +55,23 @@
             height: auto;
             margin: 10px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* White glow around images */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
             gap: 20px;
         }
 
         .lectures a,
         .other a {
-            color: #ccc; /* Light gray color for links */
+            color: #ccc;
             text-decoration: none;
             margin: 10px 0;
             display: inline-block;
             font-size: 20px;
-            border: 2px solid #ccc; /* Gray border for links */
+            border: 2px solid #ccc;
             padding: 10px;
             border-radius: 5px;
             transition: 0.3s ease;
@@ -77,24 +79,68 @@
 
         .lectures a:hover,
         .other a:hover {
-            background-color: #ccc; /* Gray background on hover */
-            color: #000; /* Dark text color on hover */
+            background-color: #ccc;
+            color: #000;
         }
 
         .footer {
             margin-top: 30px;
             font-size: 14px;
-            color: #ccc; /* Light gray for footer */
+            color: #ccc;
             text-shadow: none;
         }
 
         h2 {
             font-size: 30px;
-            color: #ccc; /* Light gray color */
-            text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666; /* Grayish glowing effect */
+            color: #ccc;
+            text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666;
             margin-bottom: 20px;
         }
 
+        /* Media Queries for smaller devices */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Smaller grid items */
+            }
+
+            .lectures a,
+            .other a {
+                font-size: 18px;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr; /* Stack images on mobile */
+            }
+
+            .lectures a,
+            .other a {
+                font-size: 16px;
+                padding: 6px;
+            }
+
+            .footer {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
