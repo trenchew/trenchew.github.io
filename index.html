@@ -175,15 +175,16 @@
 
   <script>
     function checkPassword() {
-      const password = document.getElementById('password').value;
-      if (password === 'slushaisq') {
-        alert('Login successful!');
-        return false;
-      } else {
-        alert('Incorrect password!');
-        return false;
-      }
-    }
+  const password = document.getElementById('password').value;
+  if (password === 'slushaisq') {
+    window.location.href = "dashboard.html"; // 👈 redirect
+    return false;
+  } else {
+    alert('Incorrect password!');
+    return false;
+  }
+}
+
   </script>
 
   <!-- Firebase SDK -->
