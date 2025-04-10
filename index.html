@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,17 +17,7 @@
       height: 100vh;
       font-family: Arial, sans-serif;
     }
-    .audio-player {
-      margin-top: 20px;
-      text-align: center;
-      color: #ccc;
-    }
-    .audio-player canvas {
-      width: 100%;
-      height: 100px;
-      background-color: #333;
-      margin-top: 10px;
-    }
+
     .login-container {
       background-color: rgba(0, 0, 0, 0.6);
       padding: 40px;
@@ -68,7 +59,6 @@
     }
 
     .password-container {
-      position: relative;
       display: flex;
       align-items: center;
     }
@@ -78,43 +68,11 @@
       border: none;
       border-radius: 10px;
       width: 200px;
-      margin-bottom: 10px;
+      margin-right: 10px;
+      display: block;
     }
 
-    .hint-button {
-      margin-left: 10px;
-      padding: 5px;
-      border: none;
-      background-color: transparent;
-      color: #ccc;
-      font-size: 16px;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .tooltip {
-      visibility: hidden;
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 5px;
-      border-radius: 5px;
-      position: absolute;
-      bottom: 125%;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      width: max-content;
-      z-index: 1;
-    }
-
-    .hint-button:hover + .tooltip {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    button[type="submit"] {
+    button {
       padding: 10px 20px;
       border: none;
       border-radius: 10px;
@@ -125,8 +83,23 @@
       display: block;
       margin: 0 auto;
     }
+
+    /* Audio Player Styles */
+    .audio-player {
+      margin-top: 20px;
+      text-align: center;
+      color: #ccc;
+    }
+
+    .audio-player canvas {
+      width: 100%;
+      height: 100px;
+      background-color: #333;
+      margin-top: 10px;
+    }
   </style>
 </head>
+
 <body>
   <div class="login-container">
     <div class="title">Trenchev</div>
@@ -137,24 +110,27 @@
       <div class="password-container">
         <input type="password" id="password" placeholder="Enter Password" required />
         <button type="button" class="hint-button" aria-label="Password hint">?</button>
-        <span class="tooltip">Imeto na servera v discord</span>
+        <span class="tooltip">Hint: It's related to 'pedayla'.</span>
       </div>
       <button type="submit">Login</button>
     </form>
   </div>
-  
+
+  <!-- Audio Player -->
   <div class="audio-player">
     <p id="track-title">Track Title</p>
     <button id="play-pause-btn">Pause</button>
     <canvas id="audio-visualizer"></canvas>
   </div>
-  
- <audio id="background-music" loop>
-    <source src="lgmusic.mp3" type="audio/mpeg">
+
+  <!-- Audio Element -->
+  <audio id="background-audio" loop>
+    <source src="your-audio-file.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-  
+
   <script>
+    // Function to check password
     function checkPassword() {
       const password = document.getElementById('password').value;
       if (password === 'slushaisq') {
@@ -166,7 +142,9 @@
         return false;
       }
     }
-	 const playPauseBtn = document.getElementById('play-pause-btn');
+
+    // Play/Pause Button Functionality
+    const playPauseBtn = document.getElementById('play-pause-btn');
     const audio = document.getElementById('background-audio');
 
     playPauseBtn.addEventListener('click', () => {
@@ -180,15 +158,9 @@
         playPauseBtn.textContent = 'Play';
       }
     });
-	    document.body.addEventListener('click', function() {
-      const audio = document.getElementById('background-music');
-      if (audio.paused) {
-        audio.play().catch(function(error) {
-          console.log('Playback was prevented:', error);
-        });
-      }
-    }, { once: true });
-	const canvas = document.getElementById('audio-visualizer');
+
+    // Audio Visualizer
+    const canvas = document.getElementById('audio-visualizer');
     const ctx = canvas.getContext('2d');
     const analyser = new (window.AudioContext || window.webkitAudioContext)().createAnalyser();
     const source = new (window.AudioContext || window.webkitAudioContext)().createMediaElementSource(audio);
@@ -225,6 +197,15 @@
     audio.addEventListener('play', () => {
       draw();
     });
-  </script>
-</body>
-</html>
+
+    // Start audio playback automatically after user interaction
+    document.body.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(error => {
+          console.error('Playback was prevented:', error);
+        });
+        playPauseBtn.textContent = 'Pause';
+      }
+    }, { once
+::contentReference[oaicite:0]{index=0}
+ 
