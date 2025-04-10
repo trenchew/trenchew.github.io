@@ -7,6 +7,8 @@
   <title>Login</title>
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo1.png">
+  
 
   <style>
     body {
@@ -175,16 +177,15 @@
 
   <script>
     function checkPassword() {
-  const password = document.getElementById('password').value;
-  if (password === 'slushaisq') {
-    window.location.href = "dashboard.html"; // 👈 redirect
-    return false;
-  } else {
-    alert('Incorrect password!');
-    return false;
-  }
-}
-
+      const password = document.getElementById('password').value;
+      if (password === 'slushaisq') {
+        alert('Login successful!');
+        return false;
+      } else {
+        alert('Incorrect password!');
+        return false;
+      }
+    }
   </script>
 
   <!-- Firebase SDK -->
