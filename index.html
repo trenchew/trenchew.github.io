@@ -7,96 +7,100 @@
   <title>Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #1a1a1a, #333333);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
+   body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
 
-    .login-container {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.login-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .title {
-      font-family: 'Metal Mania', cursive;
-      font-size: 48px;
-      color: #ccc;
-      margin-bottom: 30px;
-      text-shadow:
-        0 0 5px #999,
-        0 0 10px #888,
-        0 0 15px #777,
-        0 0 20px #666,
-        0 0 25px #555;
-    }
+.title {
+  font-family: 'Metal Mania', cursive;
+  font-size: 48px;
+  color: #ccc;
+  margin-bottom: 30px;
+  text-shadow: 0 0 5px #999, 0 0 10px #888, 0 0 15px #777, 0 0 20px #666, 0 0 25px #555;
+}
 
-    .profile-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.profile-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .profile-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+.profile-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-    .password-container {
-      display: flex;
-      align-items: center;
-    }
+.password-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-    input[type="password"] {
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      width: 200px;
-      margin-right: 10px;
-      display: block;
-    }
+input[type="password"] {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 200px;
+  margin-right: 10px;
+}
 
-    button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      background-color: white;
-      color: black;
-      cursor: pointer;
-      font-weight: bold;
-      display: block;
-      margin: 0 auto;
-    }
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    /* Audio Player Styles */
-    .audio-player {
-      margin-top: 20px;
-      text-align: center;
-      color: #ccc;
-    }
+.audio-player {
+  margin-top: 20px;
+  text-align: center;
+  color: #ccc;
+}
 
-    .audio-player canvas {
-      width: 100%;
-      height: 100px;
-      background-color: #333;
-      margin-top: 10px;
-    }
+.audio-player canvas {
+  width: 100%;
+  height: 100px;
+  background-color: #333;
+  margin-top: 10px;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
   </style>
 </head>
 
@@ -109,7 +113,7 @@
     <form onsubmit="return checkPassword()">
       <div class="password-container">
         <input type="password" id="password" placeholder="Enter Password" required />
-        <button type="button" class="hint-button" aria-label="Password hint">?</button>
+        <button type="button" class="hint-button" aria-label="Password hint" onmouseover="showTooltip(event)" onmouseout="hideTooltip()">?</button>
         <span class="tooltip">Hint: It's related to 'pedayla'.</span>
       </div>
       <button type="submit">Login</button>
@@ -118,19 +122,19 @@
 
   <!-- Audio Player -->
   <div class="audio-player">
-    <p id="track-title">Track Title</p>
-    <button id="play-pause-btn">Pause</button>
+    <p id="track-title">Td</p>
+    <button id="play-pause-btn">Play</button>
     <canvas id="audio-visualizer"></canvas>
   </div>
 
-  <!-- Audio Element -->
-  <audio id="background-audio" loop>
-    <source src="your-audio-file.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+<audio id="background-audio" loop autoplay muted>
+  <source src="lgmusic.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 
   <script>
-    // Function to check password
+     // Function to check password
     function checkPassword() {
       const password = document.getElementById('password').value;
       if (password === 'slushaisq') {
@@ -143,12 +147,26 @@
       }
     }
 
+    // Show password hint tooltip
+    function showTooltip(event) {
+      const tooltip = document.querySelector('.tooltip');
+      tooltip.style.display = 'block';
+      tooltip.style.left = `${event.pageX}px`;
+      tooltip.style.top = `${event.pageY + 20}px`;
+    }
+
+    // Hide password hint tooltip
+    function hideTooltip() {
+      document.querySelector('.tooltip').style.display = 'none';
+    }
+
     // Play/Pause Button Functionality
     const playPauseBtn = document.getElementById('play-pause-btn');
     const audio = document.getElementById('background-audio');
 
-    playPauseBtn.addEventListener('click', () => {
+  playPauseBtn.addEventListener('click', () => {
       if (audio.paused) {
+        audio.muted = false;
         audio.play().catch(error => {
           console.error('Playback was prevented:', error);
         });
@@ -159,53 +177,13 @@
       }
     });
 
-    // Audio Visualizer
+     // Audio Visualizer
     const canvas = document.getElementById('audio-visualizer');
     const ctx = canvas.getContext('2d');
     const analyser = new (window.AudioContext || window.webkitAudioContext)().createAnalyser();
     const source = new (window.AudioContext || window.webkitAudioContext)().createMediaElementSource(audio);
     source.connect(analyser);
     analyser.connect(new (window.AudioContext || window.webkitAudioContext)().destination);
-    analyser.fftSize = 256;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-
-    function draw() {
-      requestAnimationFrame(draw);
-      analyser.getByteFrequencyData(dataArray);
-      ctx.fillStyle = '#333';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = '#ff69b4';
-      ctx.beginPath();
-      const sliceWidth = canvas.width * 1.0 / bufferLength;
-      let x = 0;
-      for (let i = 0; i < bufferLength; i++) {
-        const v = dataArray[i] / 128.0; // Convert to range [0, 1]
-        const y = v * canvas.height / 2;
-        if (i === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-        x += sliceWidth;
-      }
-      ctx.lineTo(canvas.width, canvas.height / 2);
-      ctx.stroke();
-    }
-
-    audio.addEventListener('play', () => {
-      draw();
-    });
-
-    // Start audio playback automatically after user interaction
-    document.body.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play().catch(error => {
-          console.error('Playback was prevented:', error);
-        });
-        playPauseBtn.textContent = 'Pause';
-      }
-    }, { once
-::contentReference[oaicite:0]{index=0}
- </script>
+    analyser.fftSize = 
+::contentReference[oaicite:7]{index=7}
+ 
