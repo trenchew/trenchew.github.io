@@ -10,26 +10,26 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
             background: radial-gradient(circle, #111 0%, #000 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             font-family: 'Metal Mania', cursive;
             color: #ccc;
             text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666;
-            flex-direction: column;
-            overflow: hidden; /* Prevent overflow */
+            min-height: 100vh; /* Ensure body has full height */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-y: auto; /* Allow vertical scrolling */
         }
 
         h1 {
-            font-size: 80px;
+            font-size: 8vw; /* Responsive font size */
             animation: flicker 1.5s infinite alternate;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             text-align: center;
             color: #ccc; /* Grayish color */
             text-shadow: 0 0 15px #999, 0 0 30px #888, 0 0 50px #777; /* Stronger glow effect */
-            z-index: 1;
         }
 
         @keyframes flicker {
@@ -46,14 +46,14 @@
             width: 90%;
             max-width: 1200px;
             text-align: center;
-            margin: 0 auto;
+            margin-top: 30px; /* Add margin to give space after title */
             z-index: 1;
         }
 
         .gallery,
         .lectures,
         .other {
-            margin: 40px 0;
+            margin: 30px 0;
         }
 
         .gallery img {
@@ -68,7 +68,7 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
         }
 
@@ -78,7 +78,7 @@
             text-decoration: none;
             margin: 10px 0;
             display: inline-block;
-            font-size: 20px;
+            font-size: 1.5rem; /* Scalable font size */
             border: 2px solid #ccc;
             padding: 10px;
             border-radius: 5px;
@@ -99,7 +99,7 @@
         }
 
         h2 {
-            font-size: 40px;
+            font-size: 2.5rem; /* Adjusted font size */
             color: #ccc;
             text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666;
             margin-bottom: 20px;
@@ -112,11 +112,11 @@
             }
 
             h2 {
-                font-size: 30px;
+                font-size: 28px;
             }
 
             .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             }
 
             .lectures a,
@@ -132,7 +132,7 @@
             }
 
             h2 {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .gallery {
@@ -176,8 +176,8 @@
         <!-- Other Content Section -->
         <div class="other">
             <h2>Drugi laina</h2>
-            <a href="otherContent1.html" target="_blank">Kalendar</a>
-            <a href="otherContent2.html" target="_blank">Notes</a>
+            <a href="otherContent1.html" target="_blank">Content 1: Personal Notes</a>
+            <a href="otherContent2.html" target="_blank">Content 2: Projects</a>
             <!-- Add more content links -->
         </div>
 
