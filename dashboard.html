@@ -26,6 +26,7 @@
             animation: flicker 1.5s infinite alternate;
             margin-bottom: 30px;
             text-align: center;
+            z-index: 1;
         }
 
         @keyframes flicker {
@@ -40,9 +41,10 @@
 
         .content {
             width: 90%;
-            max-width: 1200px; /* Max width for larger screens */
+            max-width: 1200px;
             text-align: center;
             margin: 0 auto;
+            z-index: 1;
         }
 
         .gallery,
@@ -57,13 +59,13 @@
             margin: 10px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-            max-width: 300px; /* Limit image width */
-            max-height: 300px; /* Limit image height */
+            max-width: 300px;
+            max-height: 300px;
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
 
@@ -111,7 +113,7 @@
             }
 
             .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Smaller grid items */
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
 
             .lectures a,
@@ -131,7 +133,7 @@
             }
 
             .gallery {
-                grid-template-columns: 1fr; /* Stack images on mobile */
+                grid-template-columns: 1fr;
             }
 
             .lectures a,
