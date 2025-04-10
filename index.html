@@ -80,6 +80,43 @@ body {
       display: block;
       margin: 0 auto;
     }
+	.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hint-button {
+  margin-left: 10px;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  color: #ccc;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  width: max-content;
+}
+
+.password-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
   </style>
 </head>
 <body>
@@ -93,6 +130,12 @@ body {
       <button type="submit">Login</button>
     </form>
   </div>
+  <div class="password-container">
+  <input type="password" id="password" placeholder="Enter Password" required />
+  <button type="button" class="hint-button" aria-label="Password hint">?</button>
+  <span class="tooltip">Parolata e imeto na servera v discord</span>
+</div>
+
 
   <script>
     function checkPassword() {
