@@ -132,7 +132,12 @@
       <button type="submit">Login</button>
     </form>
   </div>
-
+  
+ <audio id="background-music" loop>
+    <source src="lgmusic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  
   <script>
     function checkPassword() {
       const password = document.getElementById('password').value;
@@ -145,6 +150,15 @@
         return false;
       }
     }
+	
+	    document.body.addEventListener('click', function() {
+      const audio = document.getElementById('background-music');
+      if (audio.paused) {
+        audio.play().catch(function(error) {
+          console.log('Playback was prevented:', error);
+        });
+      }
+    }, { once: true });
   </script>
 </body>
 </html>
