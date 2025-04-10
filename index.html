@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -40,6 +42,25 @@
         0 0 15px #777,
         0 0 20px #666,
         0 0 25px #555;
+    }
+
+    .visitor-counter {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 28px;
+      color: #ccc;
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow:
+        0 0 5px #999,
+        0 0 10px #888,
+        0 0 15px #777,
+        0 0 20px #666,
+        0 0 25px #555;
+    }
+
+    .visitor-counter span {
+      font-size: 40px;
+      display: inline-block;
     }
 
     .profile-icon {
@@ -108,32 +129,12 @@
       text-align: center;
       margin-top: 20px;
     }
-
-    /* Updated Counter Style Matching Title */
-    .visitor-counter {
-      font-family: 'Metal Mania', cursive;
-      font-size: 32px;
-      color: #ccc;
-      text-align: center;
-      margin-bottom: 30px;
-      text-shadow:
-        0 0 5px #999,
-        0 0 10px #888,
-        0 0 15px #777,
-        0 0 20px #666,
-        0 0 25px #555;
-    }
-
-    .visitor-counter span {
-      font-size: 48px;
-      display: inline-block;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- Updated Visitor Counter -->
+  <!-- Visitor Counter -->
   <div class="visitor-counter">
     <h2>Kolko mangala vleznaha: <span id="visitor-count">000</span></h2>
   </div>
