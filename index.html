@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -109,49 +109,33 @@
       margin-top: 20px;
     }
 
-    /* Visitor counter style */
+    /* Updated Counter Style Matching Title */
     .visitor-counter {
-      color: #00ff99;
+      font-family: 'Metal Mania', cursive;
+      font-size: 32px;
+      color: #ccc;
       text-align: center;
       margin-bottom: 30px;
-      font-family: 'Share Tech Mono', monospace;
       text-shadow:
-        0 0 5px #00ff99,
-        0 0 10px #00ff99,
-        0 0 20px #00ff99;
+        0 0 5px #999,
+        0 0 10px #888,
+        0 0 15px #777,
+        0 0 20px #666,
+        0 0 25px #555;
     }
 
-    .glitch-number {
+    .visitor-counter span {
       font-size: 48px;
-      letter-spacing: 3px;
-      animation: flicker 1.5s infinite alternate;
-    }
-
-    @keyframes flicker {
-      0% {
-        opacity: 1;
-        text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99;
-      }
-
-      50% {
-        opacity: 0.8;
-        text-shadow: 0 0 3px #00ff99;
-      }
-
-      100% {
-        opacity: 1;
-        text-shadow: 0 0 15px #00ff99, 0 0 30px #00ff99;
-      }
+      display: inline-block;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Glowing Visitor Counter -->
+  <!-- Updated Visitor Counter -->
   <div class="visitor-counter">
-    <h2>Kolko mangala vleznaha:</h2>
-    <div id="visitor-count" class="glitch-number">000</div>
+    <h2>Kolko mangala vleznaha: <span id="visitor-count">000</span></h2>
   </div>
 
   <div class="login-container">
@@ -182,7 +166,7 @@
       var widget = SC.Widget(iframeElement);
 
       widget.bind(SC.Widget.Events.READY, function () {
-        widget.seekTo(8000); // Start at 8 seconds
+        widget.seekTo(8000);
         widget.play();
       });
     };
@@ -221,9 +205,7 @@
     const database = firebase.database();
     const counterRef = database.ref('visits');
 
-    // Increment and show the count
     counterRef.transaction(current => (current || 0) + 1);
-
     counterRef.on('value', (snapshot) => {
       const count = snapshot.val();
       document.getElementById('visitor-count').textContent = count;
