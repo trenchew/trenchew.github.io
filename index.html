@@ -129,13 +129,13 @@
   <!-- Audio Player -->
   <div class="audio-player">
     <p id="track-title">Track Title</p>
-    <button id="play-pause-btn">Play</button>
+    <button id="play-btn">Play</button>
     <canvas id="audio-visualizer"></canvas>
   </div>
 
   <!-- Audio Element -->
-  <audio id="background-audio" loop autoplay muted>
-    <source src="m.mp3" type="audio/mpeg">
+  <audio id="background-audio" loop>
+    <source src="lgmusic.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -166,20 +166,19 @@
       document.querySelector('.tooltip').style.display = 'none';
     }
 
-    // Play/Pause Button Functionality
-    const playPauseBtn = document.getElementById('play-pause-btn');
+    // Play Button Functionality
+    const playBtn = document.getElementById('play-btn');
     const audio = document.getElementById('background-audio');
 
-    playPauseBtn.addEventListener('click', () => {
+    playBtn.addEventListener('click', () => {
       if (audio.paused) {
-        audio.muted = false;
         audio.play().catch(error => {
           console.error('Playback was prevented:', error);
         });
-        playPauseBtn.textContent = 'Pause';
+        playBtn.textContent = 'Pause';
       } else {
         audio.pause();
-        playPauseBtn.textContent = 'Play';
+        playBtn.textContent = 'Play';
       }
     });
 
@@ -199,10 +198,12 @@
       analyser.getByteFrequencyData(dataArray);
       ctx.fillStyle = '#333';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      const barWidth = (canvas.width / bufferLength) * 2.5;
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#00ff00';
+      ctx.beginPath();
+      const sliceWidth = canvas.width * 1.0 / bufferLength;
       let x = 0;
       for (let i = 0; i < bufferLength; i++) {
-        const barHeight = dataArray[i];
-        ctx.fillStyle = `rgb(${barHeight + 
-::contentReference[oaicite:0]{index=0}
+        const v = dataArray[i] / 128.0; // Normalize to 0.0 to 
+::contentReference[oaicite:2]{index=2}
  
