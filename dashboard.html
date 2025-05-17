@@ -2,193 +2,188 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
-	<link rel="icon" type="image/png" href="logo1.png">
-	
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle, #111 0%, #000 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            font-family: 'Metal Mania', cursive;
-            color: #ccc;
-            text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666;
-            min-height: 100vh; /* Ensure body has full height */
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-            overflow-y: auto; /* Allow vertical scrolling */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SlushaiSq</title>
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo1.png">
 
-        h1 {
-            font-size: 8vw; /* Responsive font size */
-            animation: flicker 1.5s infinite alternate;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #ccc; /* Grayish color */
-            text-shadow: 0 0 15px #999, 0 0 30px #888, 0 0 50px #777; /* Stronger glow effect */
-        }
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle, #111 0%, #000 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Metal Mania', cursive;
+      color: #ccc;
+      text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        @keyframes flicker {
-            from {
-                opacity: 1;
-            }
+    h1 {
+      font-size: 5.6vw;
+      animation: flicker 1.5s infinite alternate;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ccc;
+      text-shadow: 0 0 15px #999, 0 0 30px #888, 0 0 50px #777;
+    }
 
-            to {
-                opacity: 0.7;
-            }
-        }
+    @keyframes flicker {
+      from {
+        opacity: 1;
+      }
 
-        .content {
-            width: 90%;
-            max-width: 1200px;
-            text-align: center;
-            margin-top: 30px; /* Add margin to give space after title */
-            z-index: 1;
-        }
+      to {
+        opacity: 0.7;
+      }
+    }
 
-        .gallery,
-        .lectures,
-        .other {
-            margin: 30px 0;
-        }
+    .content {
+      width: 90%;
+      max-width: 1200px;
+      text-align: center;
+      margin-top: 30px;
+      z-index: 1;
+    }
 
-        .gallery img {
-            width: 100%;
-            height: auto;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-            max-width: 300px;
-            max-height: 300px;
-        }
+    .lectures-box {
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid #555;
+      border-radius: 15px;
+      padding: 25px 20px;
+      max-width: 360px;
+      margin: 0 auto 50px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0 20px rgba(200, 200, 200, 0.05);
+      transition: box-shadow 0.3s ease;
+    }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
+    .lectures-box:hover {
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+    }
 
-        .lectures a,
-        .other a {
-            color: #ccc;
-            text-decoration: none;
-            margin: 10px 0;
-            display: inline-block;
-            font-size: 1.5rem; /* Scalable font size */
-            border: 2px solid #ccc;
-            padding: 10px;
-            border-radius: 5px;
-            transition: 0.3s ease;
-        }
+    .lectures-box a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border: 1px solid #aaa;
+      padding: 8px 14px;
+      margin: 8px 0;
+      border-radius: 6px;
+      background-color: transparent;
+      transition: all 0.3s ease;
+      width: 70%; /* 30% smaller than full width */
+      text-align: center;
+    }
 
-        .lectures a:hover,
-        .other a:hover {
-            background-color: #ccc;
-            color: #000;
-        }
+    .lectures-box a:hover {
+      background-color: #ccc;
+      color: #111;
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
 
-        .footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #ccc;
-            text-shadow: none;
-        }
+    .other a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 10px 0;
+      display: inline-block;
+      font-size: 1.5rem;
+      border: 2px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
 
-        h2 {
-            font-size: 2.5rem; /* Adjusted font size */
-            color: #ccc;
-            text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666;
-            margin-bottom: 20px;
-        }
+    .other a:hover {
+      background-color: #ccc;
+      color: #000;
+    }
 
-        /* Media Queries for smaller devices */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 60px;
-            }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #ccc;
+      text-shadow: none;
+    }
 
-            h2 {
-                font-size: 28px;
-            }
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #ccc;
+      text-shadow: 0 0 5px #888, 0 0 10px #777, 0 0 15px #666;
+    }
 
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            }
+    /* Media Queries */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 42px;
+      }
 
-            .lectures a,
-            .other a {
-                font-size: 18px;
-                padding: 8px;
-            }
-        }
+      h2 {
+        font-size: 26px;
+      }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 40px;
-            }
+      .lectures-box a,
+      .other a {
+        font-size: 16px;
+        padding: 7px;
+        width: 80%;
+      }
+    }
 
-            h2 {
-                font-size: 22px;
-            }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 32px;
+      }
 
-            .gallery {
-                grid-template-columns: 1fr;
-            }
+      h2 {
+        font-size: 22px;
+      }
 
-            .lectures a,
-            .other a {
-                font-size: 16px;
-                padding: 6px;
-            }
+      .lectures-box a,
+      .other a {
+        font-size: 14px;
+        padding: 6px;
+        width: 90%;
+      }
 
-            .footer {
-                font-size: 12px;
-            }
-        }
-    </style>
+      .footer {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <h1>DashBoard</h1>
-    <div class="content">
-        <!-- Image Gallery Section -->
-        <div class="gallery">
-            <h2>Snimki</h2>
-            <img src="1.gif" alt="Image 1">
-            <img src="2.png" alt="Image 2">
-            <img src="3.png" alt="Image 3">
-			<img src="4.png" alt="Image 4">
-            <!-- Add more images as needed -->
-        </div>
+  <h1>SlushaiSq</h1>
+  <div class="content">
 
-        <!-- Lectures Section -->
-        <div class="lectures">
-            <h2>Lekcii bratlenka</h2>
-            <a href="lecture1.pdf" target="_blank">Lekcii Ezikoznanie</a>
-            <a href="lecture2.pdf" target="_blank">Lekcii Sbe</a>
-            <a href="lecture3.pdf" target="_blank">Lekcii It</a>
-            <!-- Add more lecture links -->
-        </div>
-
-        <!-- Other Content Section -->
-        <div class="other">
-            <h2>Drugi laina</h2>
-            <a href="otherContent1.html" target="_blank">Kalendar</a>
-            <a href="otherContent2.html" target="_blank">Notes</a>
-            <!-- Add more content links -->
-        </div>
-
-        <div class="footer">
-            <p>&copy; SlushaiSq 2025 | Baba ti pada ot pokriva losh</p>
-        </div>
+    <!-- Lectures Section -->
+    <div class="lectures-box">
+      <h2>Lekcii bratlenka</h2>
+      <a href="lecture1.pdf" download>Lekcii Ezikoznanie</a>
+      <a href="lecture2.pdf" download>Lekcii Sbe</a>
+      <a href="lecture3.pdf" download>Lekcii It</a>
     </div>
 
+    <!-- Other Content Section -->
+    <div class="other">
+      <h2>Drugi laina</h2>
+      <a href="otherContent1.html" target="_blank">Kalendar</a>
+      <a href="otherContent2.html" target="_blank">Notes</a>
+    </div>
+
+    <div class="footer">
+      <p>&copy; SlushaiSq 2025 | Baba ti pada ot pokriva losh</p>
+    </div>
+  </div>
 </body>
 
 </html>
